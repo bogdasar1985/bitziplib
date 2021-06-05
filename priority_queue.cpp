@@ -1,10 +1,10 @@
 #ifdef PRIORITY_QUEUE
 #include "priority_queue.hpp"
 template <typename T>
-priority_queue<T>::priority_queue() : heap(), is_heapify(false) {};
+priority_queue<T>::priority_queue() : _heap(), is_heapify(false) {};
 
 template <typename T>
-priority_queue<T>::priority_queue(size_t size) : heap(), is_heapify(false) { heap.reserve(size); };
+priority_queue<T>::priority_queue(size_t size) : _heap(), is_heapify(false) { _heap.reserve(size); };
 
 template <typename T>
 priority_queue<T>::~priority_queue() = default;
@@ -15,21 +15,21 @@ void priority_queue<T>::add(const T& sym)
     // Если символ есть, то инкрементируем
     // Если нет, то добавляем
     // Проверяем правильность его положения
-    for(size_t i = 0; i < heap.size(); i++)
+    for(size_t i = 0; i < _heap.size(); i++)
     {
         if(sym.sym == -1)
         {
             break;
         }
-        if(heap[i].sym == sym.sym)
+        if(_heap[i].sym == sym.sym)
         {
-            heap[i].count++;
+            _heap[i].count++;
             //heapify(i);
             is_heapify = false;
             return;
         }
     }
-    heap.push_back(sym);
+    _heap.push_back(sym);
 }
 
 template <typename T>
@@ -38,9 +38,9 @@ T priority_queue<T>::extract_min()
     if(!is_heapify)
         heapify(0);
         is_heapify = true;
-    symbol sym = heap[0];
-    std::swap(heap[0], heap[heap.size()-1]);
-    heap.erase(heap.end()-1);
+    symbol sym = _heap[0];
+    swap(_heap[0], _heap[_heap.size()-1]);
+    _heap.remove(_heap.size() - 1);
     is_heapify = false;
     return sym;
 }
@@ -57,12 +57,12 @@ void priority_queue<T>::heapify(size_t index)
         leftChild = 2 * index + 1;
         rightChild = 2 * index + 2;
         smallestChild = index;
-        if (leftChild < heap.size() && heap[leftChild] < heap[smallestChild]) 
+        if (leftChild < _heap.size() && _heap[leftChild] < _heap[smallestChild]) 
         {
             smallestChild = leftChild;
         }
 
-        if (rightChild < heap.size() && heap[rightChild] < heap[smallestChild])
+        if (rightChild < _heap.size() && _heap[rightChild] < _heap[smallestChild])
         {
             smallestChild = rightChild;
         }
@@ -72,10 +72,16 @@ void priority_queue<T>::heapify(size_t index)
             break;
         }
 
-        T temp = heap[index];
-        heap[index] = heap[smallestChild];
-        heap[smallestChild] = temp;
+        T temp = _heap[index];
+        _heap[index] = _heap[smallestChild];
+        _heap[smallestChild] = temp;
         index = smallestChild;
     }
-}
+};
+
+template <typename T>
+size_t priority_queue<T>::size() const 
+{
+    return _heap.size();
+};
 #endif

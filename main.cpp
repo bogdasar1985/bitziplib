@@ -1,7 +1,16 @@
-#include "priority_queue.hpp"
-#include "tree_node.hpp"
-#include <iostream>
+/*
+TODO:
+    Вопрос:
+    symbol и tree_node
+    Агрегация или наследование
 
+    TODO:
+    Разделаться с лишнимы шаблонами. Они не нужны, например в очереди, 
+    т.к. относительно класса symbol, она работает специфически.
+*/
+#include "huffman.hpp"
+#include "tree_node.hpp"
+#include <stdio.h>
 int main()
 {
     priority_queue<tree_node> sd;
@@ -10,17 +19,16 @@ int main()
         sd.add(symbol('a'));
     }
     
-    sd.add(symbol('b', 4));
+    sd.add(symbol('b', 6));
 
     sd.add(symbol('c', 89));
 
     for (size_t i = 0; i < 2; i++)
     {
-        /* code */
+        //code
         sd.add(symbol('d', 3));
         sd.add(symbol('d', 3));
     }
-    
 
 
     sd.add(symbol('e', 9));

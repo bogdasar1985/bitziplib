@@ -54,7 +54,7 @@ void dynamic_array<T>::push_back(const T& sym)
 };
 
 template <typename T>
-T* dynamic_array<T>::erase(const size_t index)
+T dynamic_array<T>::remove(const size_t index)
 {
     if(index == _size - 1)
     {
@@ -62,22 +62,12 @@ T* dynamic_array<T>::erase(const size_t index)
     }
     else
     {
-        // Тут короче дописать, как в reserve почти
-        T* new_buf = new T[_capacity];
-        size_t j = 0;
-        for(size_t i = 0; i < _size; i++)
+        for(size_t i = index; i < _size-1; i++)
         {
-            if(i == index)
-            {
-                continue;
-            }
-            new_buf[j] = array[i];
-            j++;
+            swap(array[i], array[i + 1]);
         }
-        delete[] array; 
-        array = new_buf;
         _size--;
     }
-    return array;
+    return *(array+index);
 };
 #endif

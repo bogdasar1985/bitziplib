@@ -1,3 +1,4 @@
 main
+bench_main*
 build/
 *.txt.user
