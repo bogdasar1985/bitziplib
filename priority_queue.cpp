@@ -77,4 +77,9 @@ size_t priority_queue::size() const
 {
     return _heap.size();
 };
+
+tree_node priority_queue::top() const
+{
+    return _heap[0];
+};
 #endif

@@ -13,6 +13,7 @@ public:
     ~priority_queue();
     void add(const tree_node& sym);
     tree_node extract_min();
+    tree_node top() const;
     size_t size() const;
 private:
     void heapify(size_t index);

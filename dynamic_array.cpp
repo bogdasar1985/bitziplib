@@ -25,6 +25,12 @@ T& dynamic_array<T>::operator[](const size_t index)
 };
 
 template <typename T>
+T dynamic_array<T>::operator[](const size_t index) const
+{
+    return array[index];
+};
+
+template <typename T>
 void dynamic_array<T>::reserve(const size_t capacity)
 {
     if(capacity < _capacity)

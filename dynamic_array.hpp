@@ -16,6 +16,7 @@ public:
     void push_back(const T& sym);
     size_t size() const;
     T& operator[] (const size_t index);
+    T operator[] (const size_t index) const;
     T remove(const size_t index);
     void reserve(const size_t capacity);
 private:
