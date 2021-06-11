@@ -7,11 +7,12 @@ class huffman
 public:
     huffman();
     ~huffman();
+    
     /*
     Методы всякие
     */
 private:
-    priority_queue<tree_node> _huff_tree;
+    priority_queue _huff_tree;
 };
 #include "huffman.cpp"
 #endif

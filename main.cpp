@@ -3,17 +3,13 @@ TODO:
     Вопрос:
     symbol и tree_node
     Агрегация или наследование
-
-    TODO:
-    Разделаться с лишнимы шаблонами. Они не нужны, например в очереди, 
-    т.к. относительно класса symbol, она работает специфически.
-*/
+0*/
 #include "huffman.hpp"
 #include "tree_node.hpp"
 #include <stdio.h>
 int main()
 {
-    priority_queue<tree_node> sd;
+    priority_queue sd;
     for (size_t i = 0; i < 5; i++)
     {
         sd.add(symbol('a'));
@@ -42,10 +38,11 @@ int main()
 
     sd.add(symbol('n', 133));
 
-    for(int i = 0; i < 9; i++)
+    size_t sz = sd.size();
+    for(int i = 0; i < sz; i++)
     {
         auto tmp = sd.extract_min();
-        printf("%c : %ld\n", tmp.sym, tmp.count);
+        printf("%c %ld\n", tmp.sym, tmp.count);
     }
     return 0;
 }

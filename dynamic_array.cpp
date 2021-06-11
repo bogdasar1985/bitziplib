@@ -1,9 +1,9 @@
 #ifdef DYNAMIC_ARRAY
 #include "dynamic_array.hpp"
 template <typename T>
-dynamic_array<T>::dynamic_array() : _size(0), _capacity(1)
+dynamic_array<T>::dynamic_array() : _size(0), _capacity(16)
 {
-    array = new T[1];
+    array = new T[16];
 };
 
 template <typename T>
@@ -48,7 +48,7 @@ void dynamic_array<T>::push_back(const T& sym)
 {
     if(_size >= _capacity)
     {
-        reserve(_capacity * 2);
+        reserve(closest_two_power(_capacity));
     }
     array[_size++] = sym;
 };
@@ -70,4 +70,26 @@ T dynamic_array<T>::remove(const size_t index)
     }
     return *(array+index);
 };
+
+template <typename T>
+inline double dynamic_array<T>::log2(double n)
+{
+    return log(n) / log(2.0);    
+}
+
+template <typename T>
+inline int dynamic_array<T>::high_bit_log2(uint n) 
+{
+  return (int)(log2((double)n) + EPS);
+}
+
+template <typename T>
+inline int dynamic_array<T>::closest_two_power(uint n) 
+{
+    int t = high_bit_log2(n);
+    n = 0;
+    n |= (1 << (t+1));
+    return n;
+}
+
 #endif

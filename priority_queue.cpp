@@ -1,16 +1,12 @@
 #ifdef PRIORITY_QUEUE
 #include "priority_queue.hpp"
-template <typename T>
-priority_queue<T>::priority_queue() : _heap(), is_heapify(false) {};
+priority_queue::priority_queue() : _heap(), is_heapify(false) {};
 
-template <typename T>
-priority_queue<T>::priority_queue(size_t size) : _heap(), is_heapify(false) { _heap.reserve(size); };
+priority_queue::priority_queue(size_t size) : _heap(), is_heapify(false) { _heap.reserve(size); };
 
-template <typename T>
-priority_queue<T>::~priority_queue() = default;
+priority_queue::~priority_queue() = default;
 
-template <typename T>
-void priority_queue<T>::add(const T& sym)
+void priority_queue::add(const tree_node& sym)
 {
     // Если символ есть, то инкрементируем
     // Если нет, то добавляем
@@ -32,21 +28,19 @@ void priority_queue<T>::add(const T& sym)
     _heap.push_back(sym);
 }
 
-template <typename T>
-T priority_queue<T>::extract_min()
+tree_node priority_queue::extract_min()
 {
     if(!is_heapify)
         heapify(0);
         is_heapify = true;
-    symbol sym = _heap[0];
+    tree_node sym = _heap[0];
     swap(_heap[0], _heap[_heap.size()-1]);
     _heap.remove(_heap.size() - 1);
     is_heapify = false;
     return sym;
 }
 
-template <typename T>
-void priority_queue<T>::heapify(size_t index)
+void priority_queue::heapify(size_t index)
 {
     size_t leftChild;
     size_t rightChild;
@@ -72,15 +66,14 @@ void priority_queue<T>::heapify(size_t index)
             break;
         }
 
-        T temp = _heap[index];
+        tree_node temp = _heap[index];
         _heap[index] = _heap[smallestChild];
         _heap[smallestChild] = temp;
         index = smallestChild;
     }
 };
 
-template <typename T>
-size_t priority_queue<T>::size() const 
+size_t priority_queue::size() const 
 {
     return _heap.size();
 };
