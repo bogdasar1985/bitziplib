@@ -1,10 +1,9 @@
-#ifdef PRIORITY_QUEUE
 #include "priority_queue.hpp"
-priority_queue::priority_queue() : _heap(), is_heapify(false) {};
+priority_queue::priority_queue() : _heap(), is_heapify(false) {}
 
-priority_queue::priority_queue(size_t size) : _heap(), is_heapify(false) { _heap.reserve(size); };
+priority_queue::priority_queue(size_t size) : is_heapify(false) { _heap.reserve(size); }
 
-priority_queue::~priority_queue() = default;
+priority_queue::~priority_queue() {}
 
 void priority_queue::add(const tree_node& sym)
 {
@@ -31,8 +30,10 @@ void priority_queue::add(const tree_node& sym)
 tree_node priority_queue::extract_min()
 {
     if(!is_heapify)
+    {
         heapify(0);
         is_heapify = true;
+    }
     tree_node sym = _heap[0];
     swap(_heap[0], _heap[_heap.size()-1]);
     _heap.remove(_heap.size() - 1);
@@ -71,15 +72,14 @@ void priority_queue::heapify(size_t index)
         _heap[smallestChild] = temp;
         index = smallestChild;
     }
-};
+}
 
 size_t priority_queue::size() const 
 {
     return _heap.size();
-};
+}
 
 tree_node priority_queue::top() const
 {
     return _heap[0];
-};
-#endif
+}

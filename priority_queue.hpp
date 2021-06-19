@@ -1,5 +1,4 @@
 // Implementation of priority queue, based on heap
-
 #ifndef PRIORITY_QUEUE
 #define PRIORITY_QUEUE
 #include "dynamic_array.hpp"
@@ -20,5 +19,4 @@ private:
     dynamic_array<tree_node> _heap;
     bool is_heapify;
 };
-#include "priority_queue.cpp"
 #endif

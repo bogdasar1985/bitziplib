@@ -1,21 +1,25 @@
-/*
-TODO:
-    Вопрос:
-    symbol и tree_node
-    Агрегация или наследование
-0*/
 #include "huffman.hpp"
 #include <stdio.h>
 #include <string.h>
 int main()
 {
-    const char* str = "abracadabra";
+    const char* str = "Bogdasar";
     size_t len = strlen(str);
     huffman s;
-    for(int i = 0; i < len; i++)
+    for(size_t i = 0; i < len; i++)
     {
         s.add_symbol(str[i]);
     }
-    s.build_tree(); // Should free memory
+    auto tree = s.build_tree();
+    char* bitstr = NULL;
+
+    for(size_t i = 0; i < strlen(str); i++)
+    {
+        bitset bts = huffman::get_code(tree, str[i]);
+        bitstr = bts.to_string();
+        printf("%c %s\n", str[i], bitstr);
+        delete[] bitstr;
+    }
+    huffman::free_tree(tree);
     return 0;
 }

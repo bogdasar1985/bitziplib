@@ -4,31 +4,31 @@ template <typename T>
 dynamic_array<T>::dynamic_array() : _size(0), _capacity(16)
 {
     array = new T[16];
-};
+}
 
 template <typename T>
 dynamic_array<T>::~dynamic_array()
 {
     delete[] array;
-};
+}
 
 template <typename T>
 size_t dynamic_array<T>::size() const
 {
     return _size;
-};
+}
 
 template <typename T>
 T& dynamic_array<T>::operator[](const size_t index)
 {
     return array[index];
-};
+}
 
 template <typename T>
 T dynamic_array<T>::operator[](const size_t index) const
 {
     return array[index];
-};
+}
 
 template <typename T>
 void dynamic_array<T>::reserve(const size_t capacity)
@@ -47,7 +47,7 @@ void dynamic_array<T>::reserve(const size_t capacity)
     _capacity = capacity;
     delete[] array;
     array = new_buf;
-};
+}
 
 template <typename T>
 void dynamic_array<T>::push_back(const T& sym)
@@ -57,7 +57,7 @@ void dynamic_array<T>::push_back(const T& sym)
         reserve(closest_two_power(_capacity));
     }
     array[_size++] = sym;
-};
+}
 
 template <typename T>
 T dynamic_array<T>::remove(const size_t index)
@@ -75,7 +75,7 @@ T dynamic_array<T>::remove(const size_t index)
         _size--;
     }
     return *(array+index);
-};
+}
 
 template <typename T>
 inline double dynamic_array<T>::log2(double n)

@@ -4,17 +4,17 @@
 struct symbol
 {
     symbol() : sym(-1), count(0) {};
-    symbol(char s) : sym(s), count(1) {};
-    symbol(char s, size_t count) : sym(s), count(count) {};
-    const bool operator<(const symbol& symb) const
+    symbol(char _s) : sym(_s), count(1) {};
+    symbol(char _s, size_t _count) : sym(_s), count(_count) {};
+    bool operator<(const symbol& symb) const
     {
         return count < symb.count;
-    };
-    const bool operator>(const symbol& symb) const
+    }
+    bool operator>(const symbol& symb) const
     {
         return count > symb.count;
-    };
-    size_t count;
+    }
     char sym;
+    size_t count;
 };
 #endif
