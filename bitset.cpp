@@ -15,8 +15,8 @@ void bitset::reset(unsigned n)
 
 char* bitset::to_string() const
 {
-    char *tmp = new char[sizeof(char) * 8 + 1];
-    memset(tmp, '\0', sizeof(char) * 8 + 1);
+    char *tmp = new char[size + 1];
+    memset(tmp, '\0', size + 1);
     int count = 0;
     for(size_t i = size; i > 0; i--)
     {
@@ -33,7 +33,7 @@ void bitset::set_size(size_t sz)
 
 void bitset::flip()
 {
-    for(int i = 0; i < sizeof(byte) * 8; i++)
+    for(size_t i = 0; i < sizeof(byte) * 8; i++)
     {
         byte ^= (1 << i);
     }

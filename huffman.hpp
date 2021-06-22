@@ -9,12 +9,14 @@ public:
     huffman();
     ~huffman();
     void add_symbol(char sym);
-    tree_node* build_tree();
-    static void free_tree(tree_node* root);
-    static bitset get_code(tree_node* root, char sym);
+    void build_tree();
+    bitset get_code(char sym) const;
+    tree_node find_node(char sym);
 private:
+    static void free_tree(tree_node* root);
     static void find_node(tree_node* root, char sym, tree_node** res);
     void set_parent_nodes(tree_node* root);
     priority_queue pq;
+    tree_node* root;
 };
 #endif

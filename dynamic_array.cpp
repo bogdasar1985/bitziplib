@@ -97,5 +97,4 @@ inline int dynamic_array<T>::closest_two_power(uint n)
     n |= (1 << (t+1));
     return n;
 }
-
 #endif

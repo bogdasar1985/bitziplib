@@ -1,25 +1,39 @@
 #include "huffman.hpp"
 #include <stdio.h>
 #include <string.h>
-int main()
+#include <limits.h>
+int main(int argc, char* argv[])
 {
-    const char* str = "Bogdasar";
-    size_t len = strlen(str);
-    huffman s;
-    for(size_t i = 0; i < len; i++)
+    if(argc < 2)
     {
-        s.add_symbol(str[i]);
+        fprintf(stderr, "Need an argument\n");
+        return 1;
     }
-    auto tree = s.build_tree();
-    char* bitstr = NULL;
+    FILE* fl = fopen(argv[1], "r");
+    if(!fl)
+    {
+        fprintf(stderr, "Can't open file\n");
+        return 2;
+    }
 
-    for(size_t i = 0; i < strlen(str); i++)
+    huffman s;
+    char symbol = 0x0;
+    while (fread(&symbol, 1, 1, fl) != 0)
     {
-        bitset bts = huffman::get_code(tree, str[i]);
-        bitstr = bts.to_string();
-        printf("%c %s\n", str[i], bitstr);
-        delete[] bitstr;
+        s.add_symbol(symbol);
     }
-    huffman::free_tree(tree);
+    s.build_tree();
+
+    for(int i = 0; i < 255; i++)
+    {
+        tree_node fnd = s.find_node(i);
+        if(fnd.count != 0)
+        {
+            char *str = s.get_code(fnd.sym).to_string();
+            printf("%c : %s\n", fnd.sym, str);
+            delete[] str;
+        }
+    }
+    fclose(fl);
     return 0;
 }
