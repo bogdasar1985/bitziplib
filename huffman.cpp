@@ -109,7 +109,7 @@ void huffman::find_node(tree_node* root, char sym, tree_node** res)
     }
 }
 
-tree_node huffman::find_node(char sym)
+tree_node huffman::find_node(char sym) const
 {
     tree_node *res = NULL;
     find_node(root, sym, &res);
@@ -124,4 +124,9 @@ tree_node huffman::find_node(char sym)
         return tmp;
     };
     return *res;
+}
+
+size_t huffman::pq_size() const
+{
+    return pq.size();
 }

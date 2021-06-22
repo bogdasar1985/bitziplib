@@ -18,9 +18,9 @@ add_library(huffman STATIC huffman.hpp huffman.cpp priority_queue bitset)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(main main.cpp)
+add_executable(coder coder.cpp)
 
-target_link_libraries(main huffman bitset)
+target_link_libraries(coder huffman bitset)
 
 add_executable(bench_main bench_main.cpp)
 
