@@ -18,7 +18,7 @@ void huffman::build_tree()
     while(pq.size() != 1)
     {
         tree_node *node1 = new tree_node; 
-        *node1 = pq.extract_min();
+        *node1 = pq.extract_min();  // Неверное извлечение
         tree_node *node2 = new tree_node;
         *node2 = pq.extract_min();
         res_node = new tree_node;

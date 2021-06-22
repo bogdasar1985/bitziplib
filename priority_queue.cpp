@@ -20,57 +20,50 @@ void priority_queue::add(const tree_node& sym)
         {
             _heap[i].count++;
             //heapify(i);
-            is_heapify = false;
+            //is_heapify = false;
+            shiftUp(i);
             return;
         }
     }
     _heap.push_back(sym);
+    shiftUp(_heap.size() - 1);
 }
 
 tree_node priority_queue::extract_min()
 {
-    if(!is_heapify)
-    {
-        heapify(0);
-        is_heapify = true;
-    }
     tree_node sym = _heap[0];
-    swap(_heap[0], _heap[_heap.size()-1]);
+    _heap[0] = _heap[_heap.size() - 1];
     _heap.remove(_heap.size() - 1);
-    is_heapify = false;
+    shiftDown(0);
     return sym;
 }
 
-void priority_queue::heapify(size_t index)
+void priority_queue::shiftUp(long index)
 {
-    size_t leftChild;
-    size_t rightChild;
-    size_t smallestChild;
-
-    while(true)
+    while(_heap[index] < _heap[(index - 1) / 2])
     {
-        leftChild = 2 * index + 1;
-        rightChild = 2 * index + 2;
-        smallestChild = index;
-        if (leftChild < _heap.size() && _heap[leftChild] < _heap[smallestChild]) 
-        {
-            smallestChild = leftChild;
-        }
+        swap(_heap[index], _heap[(index - 1) / 2]);
+        index = (index - 1) / 2;
+    }
+}
 
-        if (rightChild < _heap.size() && _heap[rightChild] < _heap[smallestChild])
+void priority_queue::shiftDown(long index)
+{
+    while ((2 * index + 1) < _heap.size())
+    {
+        int left = 2 * index +1;
+        int right = 2 * index + 2;
+        int j = left;
+        if((right < _heap.size()) && (_heap[right] < _heap[left]))
         {
-            smallestChild = rightChild;
+            j = right;
         }
-
-        if (smallestChild == index) 
+        if(_heap[index] <= _heap[j])
         {
             break;
         }
-
-        tree_node temp = _heap[index];
-        _heap[index] = _heap[smallestChild];
-        _heap[smallestChild] = temp;
-        index = smallestChild;
+        swap(_heap[index], _heap[j]);
+        index = j;
     }
 }
 

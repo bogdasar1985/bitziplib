@@ -14,6 +14,10 @@ struct symbol
     {
         return count > symb.count;
     }
+    bool operator<=(const symbol& symb) const
+    {
+        return count <= symb.count;
+    }
     char sym;
     size_t count;
 };

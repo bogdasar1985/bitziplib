@@ -23,17 +23,6 @@ int main(int argc, char* argv[])
         s.add_symbol(symbol);
     }
     s.build_tree();
-
-    for(int i = 0; i < 255; i++)
-    {
-        tree_node fnd = s.find_node(i);
-        if(fnd.count != 0)
-        {
-            char *str = s.get_code(fnd.sym).to_string();
-            printf("%c : %s\n", fnd.sym, str);
-            delete[] str;
-        }
-    }
     fclose(fl);
     return 0;
 }

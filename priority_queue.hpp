@@ -15,7 +15,8 @@ public:
     tree_node top() const;
     size_t size() const;
 private:
-    void heapify(size_t index);
+    void shiftUp(long index);
+    void shiftDown(long index);
     dynamic_array<tree_node> _heap;
     bool is_heapify;
 };
