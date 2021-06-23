@@ -1,7 +1,7 @@
 #include "priority_queue.hpp"
-priority_queue::priority_queue() : _heap(), is_heapify(false) {}
+priority_queue::priority_queue() {}
 
-priority_queue::priority_queue(size_t size) : is_heapify(false) { _heap.reserve(size); }
+priority_queue::priority_queue(size_t size) { _heap.reserve(size); }
 
 priority_queue::~priority_queue() {}
 

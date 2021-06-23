@@ -18,6 +18,5 @@ private:
     void shiftUp(long index);
     void shiftDown(long index);
     dynamic_array<tree_node> _heap;
-    bool is_heapify;
 };
 #endif
