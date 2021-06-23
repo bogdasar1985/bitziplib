@@ -18,7 +18,7 @@ void priority_queue::add(const tree_node& sym)
         }
         if(_heap[i].sym == sym.sym)
         {
-            _heap[i].count++;
+            _heap[i].count+=sym.count;
             //heapify(i);
             //is_heapify = false;
             shiftUp(i);
