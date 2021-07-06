@@ -16,7 +16,6 @@ make -j4
 ```
 
 # How to use via CMake
-Inside your project directory
 ```cmake
 include_directories(${PATH to /include})
 
