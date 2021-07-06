@@ -1,0 +1,28 @@
+# HuffmanCodeLib
+HuffmanCodeLib is a C++ library for work with huffman algorithm
+
+* C++ 98
+* No Exceptions
+* No STL
+
+# How to build a library
+Inside a library directory
+```
+mkdir build && cd build
+
+cmake ..
+
+make -j4
+```
+
+# How to use via CMake
+Inside your project directory
+```cmake
+include_directories(${PATH to /include})
+
+add_executable(main main.cpp)
+
+target_link_directories(main PUBLIC ${PATH to /lib})
+
+target_link_libraries(main huffman bitset)
+```
