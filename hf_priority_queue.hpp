@@ -4,12 +4,12 @@
 #include "dynamic_array.hpp"
 #include "tree_node.hpp"
 #include "utility.hpp"
-class priority_queue
+class hf_priority_queue
 {
 public:
-    priority_queue();
-    priority_queue(size_t size);
-    ~priority_queue();
+    hf_priority_queue();
+    hf_priority_queue(size_t size);
+    ~hf_priority_queue();
     void add(const tree_node& sym);
     tree_node extract_min();
     tree_node top() const;

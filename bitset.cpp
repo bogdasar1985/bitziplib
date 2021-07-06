@@ -31,6 +31,11 @@ void bitset::set_size(size_t sz)
     size = sz;
 }
 
+size_t bitset::get_size() const
+{
+    return size;
+}
+
 void bitset::flip()
 {
     for(size_t i = 0; i < sizeof(byte) * 8; i++)

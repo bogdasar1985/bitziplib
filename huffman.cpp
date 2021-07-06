@@ -63,7 +63,8 @@ bitset huffman::get_code(huffman& huf, char sym)
     tree_node* curr = find;
     if(find == NULL)
     {
-        throw "Can't find node!";
+        bitset.set_size(0);
+        return bitset;
     }
 
     while (curr != huf.root)

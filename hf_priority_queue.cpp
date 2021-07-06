@@ -1,11 +1,11 @@
-#include "priority_queue.hpp"
-priority_queue::priority_queue() {}
+#include "hf_priority_queue.hpp"
+hf_priority_queue::hf_priority_queue() {}
 
-priority_queue::priority_queue(size_t size) { _heap.reserve(size); }
+hf_priority_queue::hf_priority_queue(size_t size) { _heap.reserve(size); }
 
-priority_queue::~priority_queue() {}
+hf_priority_queue::~hf_priority_queue() {}
 
-void priority_queue::add(const tree_node& sym)
+void hf_priority_queue::add(const tree_node& sym)
 {
     // Если символ есть, то инкрементируем
     // Если нет, то добавляем
@@ -29,7 +29,7 @@ void priority_queue::add(const tree_node& sym)
     shiftUp(_heap.size() - 1);
 }
 
-tree_node priority_queue::extract_min()
+tree_node hf_priority_queue::extract_min()
 {
     tree_node sym = _heap[0];
     _heap[0] = _heap[_heap.size() - 1];
@@ -38,7 +38,7 @@ tree_node priority_queue::extract_min()
     return sym;
 }
 
-void priority_queue::shiftUp(long index)
+void hf_priority_queue::shiftUp(long index)
 {
     while(_heap[index] < _heap[(index - 1) / 2])
     {
@@ -47,7 +47,7 @@ void priority_queue::shiftUp(long index)
     }
 }
 
-void priority_queue::shiftDown(long index)
+void hf_priority_queue::shiftDown(long index)
 {
     while ((2 * index + 1) < _heap.size())
     {
@@ -67,12 +67,12 @@ void priority_queue::shiftDown(long index)
     }
 }
 
-size_t priority_queue::size() const 
+size_t hf_priority_queue::size() const 
 {
     return _heap.size();
 }
 
-tree_node priority_queue::top() const
+tree_node hf_priority_queue::top() const
 {
     return _heap[0];
 }

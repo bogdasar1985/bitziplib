@@ -1,13 +1,13 @@
 #ifndef HUFFMAN
 #define HUFFMAN
-#include "priority_queue.hpp"
-#include "bitset.hpp"
+#include "../hf_priority_queue.hpp"
+#include "../bitset.hpp"
 #include <stdio.h>
 namespace huffman
 {
     struct huffman
     {
-        priority_queue pq;
+        hf_priority_queue pq;
         tree_node* root;
         huffman();
         ~huffman();

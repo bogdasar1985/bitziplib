@@ -13,6 +13,7 @@ public:
     void flip();
     char* to_string() const;
     void set_size(size_t sz); // Dangerous method!
+    size_t get_size() const;
 private:
     size_t size;
     char byte;
