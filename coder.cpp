@@ -37,15 +37,15 @@ int main(int argc, char* argv[])
         return 3;
     }
 
-    huffman s;
+    huffman::huffman s;
     char symbol = 0x0;
     while (read(read_fl, &symbol, 1) != 0)
     {
-        s.add_symbol(symbol);
+        huffman::add_symbol(s, symbol);
     }
 
     // Write queue size in elements
-    unsigned int pq_size = s.pq_size();
+    unsigned int pq_size = huffman::pq_size(s);
     int res = write(write_fl, &pq_size, sizeof(pq_size)); // specify cross-platform size
     if(res < 0)
     {
@@ -53,7 +53,7 @@ int main(int argc, char* argv[])
         return 4;
     }
     
-    s.build_tree();
+    huffman::build_tree(s);
 
     close(read_fl);
     return 0;

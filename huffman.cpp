@@ -1,26 +1,26 @@
 #include "huffman.hpp"
-huffman::huffman() : root(NULL) {}
+huffman::huffman::huffman() : root(NULL) {}
 
-huffman::~huffman() 
+huffman::huffman::~huffman() 
 {
     if(root)
-        free_tree(root);
+        huffman_utils::free_tree(root);
 }
 
-void huffman::add_symbol(char sym)
+void huffman::add_symbol(huffman &huf, char sym)
 {
-    pq.add(tree_node(sym));
+    huf.pq.add(tree_node(sym));
 }
 
-void huffman::build_tree()
+void huffman::build_tree(huffman& huf)
 {
     tree_node* res_node = NULL;
-    while(pq.size() != 1)
+    while(huf.pq.size() != 1)
     {
         tree_node *node1 = new tree_node; 
-        *node1 = pq.extract_min();  // Неверное извлечение
+        *node1 = huf.pq.extract_min();  // Неверное извлечение
         tree_node *node2 = new tree_node;
-        *node2 = pq.extract_min();
+        *node2 = huf.pq.extract_min();
         res_node = new tree_node;
         res_node->count = node1->count + node2->count;
         if(node1->count <= node2->count)
@@ -33,17 +33,17 @@ void huffman::build_tree()
             res_node->left = node2;
             res_node->right = node1;
         }
-        pq.add(*res_node);
-        if(pq.size() != 1)
+        huf.pq.add(*res_node);
+        if(huf.pq.size() != 1)
         {
             delete res_node;
         }
     }
-    set_parent_nodes(res_node);
-    root = res_node;
+    huffman_utils::set_parent_nodes(res_node);
+    huf.root = res_node;
 }
 
-void huffman::free_tree(tree_node* root)
+void huffman::huffman_utils::free_tree(tree_node* root)
 {
     if(root != NULL)
     {
@@ -53,20 +53,20 @@ void huffman::free_tree(tree_node* root)
     }
 }
 
-bitset huffman::get_code(char sym) const
+bitset huffman::get_code(huffman& huf, char sym)
 {
     tree_node* find = NULL;
     bitset bitset;
     int count = 0;
     int size = 0;
-    find_node(root, sym, &find);
+    huffman_utils::find_node(huf.root, sym, &find);
     tree_node* curr = find;
     if(find == NULL)
     {
         throw "Can't find node!";
     }
 
-    while (curr != root)
+    while (curr != huf.root)
     {
         tree_node* tmp = curr;
         curr = curr->parent;
@@ -85,7 +85,7 @@ bitset huffman::get_code(char sym) const
     return bitset;
 }
 
-void huffman::set_parent_nodes(tree_node* root)
+void huffman::huffman_utils::set_parent_nodes(tree_node* root)
 {
     if(root != NULL)
     {
@@ -98,7 +98,7 @@ void huffman::set_parent_nodes(tree_node* root)
     }
 }
 
-void huffman::find_node(tree_node* root, char sym, tree_node** res)
+void huffman::huffman_utils::find_node(tree_node* root, char sym, tree_node** res)
 {
     if(root != NULL)
     {
@@ -109,10 +109,10 @@ void huffman::find_node(tree_node* root, char sym, tree_node** res)
     }
 }
 
-tree_node huffman::find_node(char sym) const
+tree_node huffman::find_node(huffman& huf, char sym)
 {
     tree_node *res = NULL;
-    find_node(root, sym, &res);
+    huffman_utils::find_node(huf.root, sym, &res);
     if(res == NULL)
     {
         tree_node tmp;
@@ -126,7 +126,7 @@ tree_node huffman::find_node(char sym) const
     return *res;
 }
 
-size_t huffman::pq_size() const
+size_t huffman::pq_size(huffman& huf)
 {
-    return pq.size();
+    return huf.pq.size();
 }
