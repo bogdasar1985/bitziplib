@@ -4,7 +4,7 @@ project(HuffmanCodeLib)
 
 set(CMAKE_CXX_STANDARD 98)
 
-set(CMAKE_CXX_FLAGS "-Wall -Wextra -Wstrict-aliasing -Wpedantic -ansi -pedantic")
+set(CMAKE_CXX_FLAGS "-Wall -Wextra -Wstrict-aliasing -Wpedantic -fno-exceptions -ansi -pedantic")
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ..)
 
