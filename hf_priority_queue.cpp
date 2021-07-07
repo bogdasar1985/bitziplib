@@ -7,9 +7,9 @@ hf_priority_queue::~hf_priority_queue() {}
 
 void hf_priority_queue::add(const tree_node& sym)
 {
-    // Если символ есть, то инкрементируем
-    // Если нет, то добавляем
-    // Проверяем правильность его положения
+    // If symbol exist, increment counter
+    // If not, add a new symbol
+    // Fix position
     for(size_t i = 0; i < _heap.size(); i++)
     {
         if(sym.sym == -1)
@@ -19,8 +19,6 @@ void hf_priority_queue::add(const tree_node& sym)
         if(_heap[i].sym == sym.sym)
         {
             _heap[i].count+=sym.count;
-            //heapify(i);
-            //is_heapify = false;
             shiftDown(i);
             return;
         }
