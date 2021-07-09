@@ -8,15 +8,24 @@ struct symbol
     symbol(char _s, size_t _count) : sym(_s), count(_count) {};
     bool operator<(const symbol& symb) const
     {
-        return count < symb.count;
+        if(count == symb.count)
+            return sym < symb.sym;
+        else
+            return count < symb.count;
     }
     bool operator>(const symbol& symb) const
     {
-        return count > symb.count;
+        if(count == symb.count)
+            return sym > symb.sym;
+        else
+            return count > symb.count;
     }
     bool operator<=(const symbol& symb) const
     {
-        return count <= symb.count;
+        if(count == symb.count)
+            return sym <= symb.sym;
+        else
+            return count <= symb.count;
     }
     char sym;
     size_t count;
