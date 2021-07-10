@@ -86,6 +86,36 @@ bitset huffman::get_code(huffman& huf, char sym)
     return bitset;
 }
 
+void huffman::get_code(huffman& huf, char sym, char** res)
+{
+    tree_node* find = NULL;
+    int count = 0;
+    int size = 0;
+    huffman_utils::find_node(huf.root, sym, &find);
+    tree_node* curr = find;
+    if(find == NULL)
+    {
+        *res = NULL;
+        return;
+    }
+
+    while (curr != huf.root)
+    {
+        tree_node* tmp = curr;
+        curr = curr->parent;
+        if(tmp == curr->left)
+        {
+            *(*res + count) = '0';
+        }
+        if(tmp == curr->right)
+        {
+            *(*res + count) = '1';
+        }
+        count++;
+        size++;
+    }
+}
+
 void huffman::huffman_utils::set_parent_nodes(tree_node* root)
 {
     if(root != NULL)

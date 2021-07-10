@@ -11,7 +11,7 @@ public:
     void set(unsigned n);
     void reset(unsigned n);
     void flip();
-    char* to_string() const;
+    void to_string(char** res) const;
     void set_size(size_t sz); // Dangerous method!
     size_t get_size() const;
 private:

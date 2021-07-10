@@ -13,17 +13,16 @@ void bitset::reset(unsigned n)
     byte &= ~(1 << n);
 }
 
-char* bitset::to_string() const
+void bitset::to_string(char** res) const
 {
-    char *tmp = new char[size + 1];
-    memset(tmp, '\0', size + 1);
+    //char *tmp = new char[size + 1];
+    //memset(*res, '\0', size + 1);
     int count = 0;
     for(size_t i = size; i > 0; i--)
     {
-        tmp[count] = (((byte >> (i-1)) & 1) + '0');
+        *(res[count]) = (((byte >> (i-1)) & 1) + '0');
         count++;
     }
-    return tmp;
 }
 
 void bitset::set_size(size_t sz)

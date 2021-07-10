@@ -4,3 +4,4 @@ bench_main*
 build/
 *.txt.user
 lib
+main.cpp
