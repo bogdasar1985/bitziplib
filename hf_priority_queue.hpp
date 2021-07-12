@@ -9,7 +9,9 @@ class hf_priority_queue
 public:
     hf_priority_queue();
     hf_priority_queue(size_t size);
+    hf_priority_queue(const hf_priority_queue& queue);
     ~hf_priority_queue();
+    hf_priority_queue& operator=(const hf_priority_queue& queue);
     void add(const tree_node& sym);
     tree_node extract_min();
     tree_node top() const;

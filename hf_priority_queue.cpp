@@ -3,7 +3,15 @@ hf_priority_queue::hf_priority_queue() {}
 
 hf_priority_queue::hf_priority_queue(size_t size) { _heap.reserve(size); }
 
+hf_priority_queue::hf_priority_queue(const hf_priority_queue& queue) : _heap(queue._heap) {}
+
 hf_priority_queue::~hf_priority_queue() {}
+
+hf_priority_queue& hf_priority_queue::operator=(const hf_priority_queue& queue)
+{
+    _heap = queue._heap;
+    return *this;
+}
 
 void hf_priority_queue::add(const tree_node& sym)
 {

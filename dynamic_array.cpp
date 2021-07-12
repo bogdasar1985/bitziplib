@@ -7,6 +7,16 @@ dynamic_array<T>::dynamic_array() : _size(0), _capacity(16)
 }
 
 template <typename T>
+dynamic_array<T>::dynamic_array(const dynamic_array& arr) : _size(arr._size), _capacity(arr._capacity)
+{
+    array = new T[arr._capacity];
+    for(size_t i = 0; i < arr._size; i++)
+    {
+        array[i] = arr.array[i];
+    }
+}
+
+template <typename T>
 dynamic_array<T>::~dynamic_array()
 {
     delete[] array;

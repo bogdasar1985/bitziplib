@@ -9,6 +9,7 @@ class dynamic_array
 {
 public:
     dynamic_array();
+    dynamic_array(const dynamic_array& arr);
     ~dynamic_array();
     void push_back(const T& sym);
     size_t size() const;
