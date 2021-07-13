@@ -5,3 +5,4 @@ build/
 *.txt.user
 lib
 main.cpp
+coder.cpp

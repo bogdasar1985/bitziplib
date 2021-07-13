@@ -114,6 +114,15 @@ void huffman::get_code(huffman& huf, char sym, char** res)
         count++;
         size++;
     }
+    
+    // Reverse a string
+    size_t strl = strlen(*res);
+    for(size_t i = 0; i < strl / 2; i++)
+    {
+        char tmp = *(*res + i);
+        *(*res + i) = *(*res + (strl - i - 1));
+        *(*res + (strl - i - 1)) = tmp;
+    }
 }
 
 void huffman::huffman_utils::set_parent_nodes(tree_node* root)

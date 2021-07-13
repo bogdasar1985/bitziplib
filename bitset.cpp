@@ -15,8 +15,6 @@ void bitset::reset(unsigned n)
 
 void bitset::to_string(char** res) const
 {
-    //char *tmp = new char[size + 1];
-    //memset(*res, '\0', size + 1);
     int count = 0;
     for(size_t i = size; i > 0; i--)
     {
