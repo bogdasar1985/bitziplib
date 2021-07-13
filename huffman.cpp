@@ -58,7 +58,7 @@ bitset huffman::get_code(huffman& huf, char sym)
     tree_node* find = NULL;
     bitset bitset;
     int count = 0;
-    int size = 0;
+    size_t size = 0;
     huffman_utils::find_node(huf.root, sym, &find);
     tree_node* curr = find;
     if(find == NULL)
@@ -83,6 +83,16 @@ bitset huffman::get_code(huffman& huf, char sym)
         size++;
     }
     bitset.set_size(size);
+
+    // Reverse bitset
+    for(size_t i = 0; i < size / 2; i++)
+    {
+        if(bitset[i] != bitset[size - i -1])
+        {
+            bitset.flip(i);
+            bitset.flip(size - i - 1);
+        }
+    }
     return bitset;
 }
 
@@ -114,7 +124,7 @@ void huffman::get_code(huffman& huf, char sym, char** res)
         count++;
         size++;
     }
-    
+
     // Reverse a string
     size_t strl = strlen(*res);
     for(size_t i = 0; i < strl / 2; i++)

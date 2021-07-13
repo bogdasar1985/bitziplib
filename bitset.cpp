@@ -18,7 +18,7 @@ void bitset::to_string(char** res) const
     int count = 0;
     for(size_t i = size; i > 0; i--)
     {
-        *(res[count]) = (((byte >> (i-1)) & 1) + '0');
+        *(*res + count) = (((byte >> (i-1)) & 1) + '0');
         count++;
     }
 }
@@ -39,4 +39,14 @@ void bitset::flip()
     {
         byte ^= (1 << i);
     }
+}
+
+void bitset::flip(unsigned i)
+{
+    byte ^= (1 << i);
+}
+
+bool bitset::operator[](unsigned i) const
+{
+    return (((1 << 1) - 1) & (this->byte >> (i - 1)));
 }
