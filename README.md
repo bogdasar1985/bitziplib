@@ -4,6 +4,7 @@ HuffmanCodeLib is a C++ library for work with huffman algorithm
 * C++ 98
 * No Exceptions
 * No STL
+* No RTTI
 
 # How to build a library
 Inside a library directory
