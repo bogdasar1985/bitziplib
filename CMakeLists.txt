@@ -14,8 +14,12 @@ add_library(dynamic_array STATIC dynamic_array.hpp dynamic_array.cpp)
 
 add_library(hf_priority_queue STATIC hf_priority_queue.cpp hf_priority_queue.hpp symbol.hpp utility.hpp dynamic_array)
 
+# Compile library
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ../lib)
 
 add_library(bitset STATIC bitset.hpp bitset.cpp)
 
 add_library(huffman STATIC include/huffman.hpp huffman.cpp hf_priority_queue bitset)
+
+# Compile examples
+add_subdirectory(examples/file_compressor)
