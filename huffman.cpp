@@ -135,6 +135,24 @@ void huffman::get_code(huffman& huf, char sym, char** res)
     }
 }
 
+char huffman::get_symbol(huffman& huf, char* code)
+{
+    size_t code_len = strlen(code);
+    tree_node* curr = huf.root;
+    for(int i = 0; i < code_len; ++i)
+    {
+        if(code[i] == '0')
+        {
+            curr = curr->left;
+        }
+        else if(code[i] == '1')
+        {
+            curr = curr->right;
+        }
+    }
+    return curr->sym;
+}
+
 void huffman::huffman_utils::set_parent_nodes(tree_node* root)
 {
     if(root != NULL)
