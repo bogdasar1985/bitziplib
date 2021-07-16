@@ -14,11 +14,11 @@ namespace huffman
     };
     void add_symbol(huffman& huf, char sym);
     void build_tree(huffman& huf);
-    bitset get_code(huffman& huf,  char sym);
-    void get_code(huffman& huf, char sym, char** res);
-    char get_symbol(huffman& huf, char* code);
-    tree_node find_node(huffman& huf, char sym);
-    size_t pq_size(huffman& huf);
+    bitset get_code(const huffman& huf,  char sym);
+    void get_code(const huffman& huf, char sym, char** res);
+    char get_symbol(const huffman& huf, char* code);
+    tree_node find_node(const huffman& huf, char sym);
+    size_t pq_size(const huffman& huf);
 
     namespace huffman_utils
     {

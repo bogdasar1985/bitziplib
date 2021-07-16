@@ -53,7 +53,7 @@ void huffman::huffman_utils::free_tree(tree_node* root)
     }
 }
 
-bitset huffman::get_code(huffman& huf, char sym)
+bitset huffman::get_code(const huffman& huf, char sym)
 {
     tree_node* find = NULL;
     bitset bitset;
@@ -96,7 +96,7 @@ bitset huffman::get_code(huffman& huf, char sym)
     return bitset;
 }
 
-void huffman::get_code(huffman& huf, char sym, char** res)
+void huffman::get_code(const huffman& huf, char sym, char** res)
 {
     tree_node* find = NULL;
     int count = 0;
@@ -135,11 +135,11 @@ void huffman::get_code(huffman& huf, char sym, char** res)
     }
 }
 
-char huffman::get_symbol(huffman& huf, char* code)
+char huffman::get_symbol(const huffman& huf, char* code)
 {
     size_t code_len = strlen(code);
     tree_node* curr = huf.root;
-    for(int i = 0; i < code_len; ++i)
+    for(size_t i = 0; i < code_len; ++i)
     {
         if(code[i] == '0')
         {
@@ -177,7 +177,7 @@ void huffman::huffman_utils::find_node(tree_node* root, char sym, tree_node** re
     }
 }
 
-tree_node huffman::find_node(huffman& huf, char sym)
+tree_node huffman::find_node(const huffman& huf, char sym)
 {
     tree_node *res = NULL;
     huffman_utils::find_node(huf.root, sym, &res);
@@ -194,7 +194,7 @@ tree_node huffman::find_node(huffman& huf, char sym)
     return *res;
 }
 
-size_t huffman::pq_size(huffman& huf)
+size_t huffman::pq_size(const huffman& huf)
 {
     return huf.pq.size();
 }
