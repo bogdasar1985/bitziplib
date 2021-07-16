@@ -16,6 +16,7 @@ namespace huffman
     void build_tree(huffman& huf);
     bitset get_code(huffman& huf,  char sym);
     void get_code(huffman& huf, char sym, char** res);
+    char get_symbol(huffman& huf, char* code);
     tree_node find_node(huffman& huf, char sym);
     size_t pq_size(huffman& huf);
 
