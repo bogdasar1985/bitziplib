@@ -4,6 +4,7 @@
 #include "dynamic_array.hpp"
 #include "tree_node.hpp"
 #include "utility.hpp"
+#include <stdio.h>
 class hf_priority_queue
 {
 public:
@@ -16,6 +17,8 @@ public:
     tree_node extract_min();
     tree_node top() const;
     size_t size() const;
+    void serialize(FILE* fl) const;
+    void deserialize(FILE *fl, size_t pq_size);
 private:
     void shiftUp(long index);
     void shiftDown(long index);

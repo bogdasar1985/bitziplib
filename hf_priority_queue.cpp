@@ -82,3 +82,26 @@ tree_node hf_priority_queue::top() const
 {
     return _heap[0];
 }
+
+void hf_priority_queue::serialize(FILE* fl) const
+{
+    for (size_t i = 0; i < _heap.size(); ++i)
+    {
+        char tmp = _heap[i].sym;
+        size_t sz = _heap[i].count;
+        fwrite(&tmp, sizeof(tmp), 1, fl);
+        fwrite(&sz, sizeof(sz), 1, fl);
+    }
+}
+
+void hf_priority_queue::deserialize(FILE* fl, size_t pq_size)
+{
+    for(size_t i = 0; i < pq_size; i++)
+    {
+        char ch_tmp = '\0';
+        size_t sz = 0;
+        fread(&ch_tmp, sizeof(ch_tmp), 1, fl);
+        fread(&sz, sizeof(sz), 1, fl);
+        _heap.push_back(symbol(ch_tmp, sz));
+    }
+}
