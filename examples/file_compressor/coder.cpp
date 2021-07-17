@@ -1,7 +1,5 @@
 #include "huffman.hpp"
 #include <stdio.h>
-#include <string.h>
-#include <limits.h>
 int main(int argc, char *argv[])
 {
     FILE *source_fl = NULL;

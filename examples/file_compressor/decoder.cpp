@@ -1,6 +1,5 @@
 #include <sys/stat.h>
 #include <limits.h>
-#include <assert.h>
 #include "huffman.hpp"
 #define CODE_SIZE 256
 int main(int argc, char *argv[])
