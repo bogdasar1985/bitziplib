@@ -21,18 +21,21 @@ int main(int argc, char *argv[])
         return 1;
     }
 
+    // Get file for compressing
     source_fl = fopen(argv[1], "r+");
     if(source_fl == NULL)
     {
         return 2;
     }
 
+    // Get file for write compress result
     result_fl = fopen(argv[2], "w+");
     if(result_fl == NULL)
     {
         return 3;
     }
 
+    // Add all symbols from file to tree
     while(fread(&symbol, 1, 1, source_fl) != 0)
     {
         huffman::add_symbol(s, symbol);
@@ -86,6 +89,7 @@ int main(int argc, char *argv[])
     bit_position = 7;
     bits = '\0';
 
+    // Write in file
     fseek(source_fl, 0, SEEK_SET);
     while(fread(&symbol, 1, 1, source_fl) != 0)
     {
