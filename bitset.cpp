@@ -1,4 +1,5 @@
 #include "bitset.hpp"
+#warning Do not use bitset, bug there!
 bitset::bitset() : size(8), byte(0x0) {}
 
 bitset::~bitset() {}
