@@ -26,5 +26,5 @@ target_link_directories(main PUBLIC ${PATH to /lib})
 
 target_link_libraries(main huffman bitset)
 ```
-
+---------------
 NOTE: Documentation, Contributing Guidelines and Coding Standarts are coming soon!
