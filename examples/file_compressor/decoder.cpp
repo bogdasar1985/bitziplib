@@ -39,14 +39,8 @@ int main(int argc, char *argv[])
     fread(&pq_size, sizeof(pq_size), 1, source_fl);
 
     // Fill a priority_queue
-    for(size_t i = 0; i < pq_size; ++i)
-    {
-        tree_node tr;
-        fread(&tr.sym, sizeof(tr.sym), 1, source_fl);
-        fread(&tr.count, sizeof(tr.count), 1, source_fl);
-        s.pq.add(tr);
-    }
-
+    s.pq.deserialize(source_fl, pq_size);
+    
     // Build a tree
     huffman::build_tree(s);
     
