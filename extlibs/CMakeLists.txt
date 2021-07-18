@@ -6,8 +6,6 @@ set(CMAKE_CXX_STANDARD 98)
 
 set(CMAKE_CXX_FLAGS "-Wall -Wextra -Wstrict-aliasing -Wpedantic -fno-exceptions -fno-rtti -ansi -pedantic")
 
-add_subdirectory(examples/file_compressor)
+add_library(bitset STATIC bitset.hpp bitset.cpp)
 
-add_subdirectory(extlibs)
-
-add_subdirectory(src/huffman)
+add_library(dynamic_array STATIC dynamic_array.hpp dynamic_array.cpp)

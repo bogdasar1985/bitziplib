@@ -1,7 +1,7 @@
 #ifndef HUFFMAN
 #define HUFFMAN
-#include "../hf_priority_queue.hpp"
-#include "../bitset.hpp"
+#include "../src/huffman/hf_priority_queue.hpp"
+#include "../extlibs/bitset.hpp"
 #include <stdio.h>
 namespace huffman
 {
