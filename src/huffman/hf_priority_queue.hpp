@@ -21,7 +21,7 @@ public:
     void deserialize(FILE *fl, size_t pq_size);
 private:
     void shiftUp(long index);
-    void shiftDown(long index);
+    void shiftDown(size_t index);
     dynamic_array<tree_node> _heap;
 };
 #endif

@@ -53,12 +53,12 @@ void hf_priority_queue::shiftUp(long index)
     }
 }
 
-void hf_priority_queue::shiftDown(long index)
+void hf_priority_queue::shiftDown(size_t index)
 {
     while ((2 * index + 1) < _heap.size())
     {
-        int left = 2 * index +1;
-        int right = 2 * index + 2;
+        size_t left = 2 * index +1;
+        size_t right = 2 * index + 2;
         int j = left;
         if((right < _heap.size()) && (_heap[right] < _heap[left]))
         {
@@ -105,3 +105,4 @@ void hf_priority_queue::deserialize(FILE* fl, size_t pq_size)
         _heap.push_back(symbol(ch_tmp, sz));
     }
 }
+
