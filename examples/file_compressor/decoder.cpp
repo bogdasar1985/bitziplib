@@ -22,7 +22,7 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-    source_fl = fopen(argv[1], "r+");
+    source_fl = fopen(argv[1], "rb");
     if(source_fl == NULL)
     {
         return -1;

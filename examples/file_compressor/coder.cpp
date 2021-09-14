@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
     }
 
     // Get file for write compress result
-    result_fl = fopen(argv[2], "w+");
+    result_fl = fopen(argv[2], "wb");
     if(result_fl == NULL)
     {
         return 3;
