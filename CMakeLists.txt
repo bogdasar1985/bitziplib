@@ -4,12 +4,20 @@ project(HuffmanCodeLib)
 
 set(CMAKE_CXX_STANDARD 98)
 
-set(CMAKE_CXX_FLAGS "-Wall -Wextra -Wstrict-aliasing -Wpedantic -fno-exceptions -fno-rtti -ansi -pedantic")
+option(TESTS "Build including tests" OFF)
+option(EXAMPLES "Build including examples" OFF)
 
-add_subdirectory(examples/file_compressor)
+set(CMAKE_CXX_FLAGS "-Wall -Wextra -Wstrict-aliasing -Wpedantic -fno-exceptions -fno-rtti -ansi -pedantic")
 
 add_subdirectory(extlibs)
 
 add_subdirectory(src/huffman)
 
-add_subdirectory(tests)
+if(TESTS)
+    add_subdirectory(tests)
+endif()
+
+if(EXAMPLES)
+    add_subdirectory(examples/file_compressor)
+endif()
+

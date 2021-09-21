@@ -4,7 +4,6 @@ bench_main*
 build/
 *.txt.user
 lib
-main.cpp
 coder
 decoder
 tags
