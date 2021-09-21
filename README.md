@@ -15,7 +15,7 @@ cmake ..
 
 make -j4
 ```
-Use `-DTESTS=1` option to build with tests.
+Use `-DTESTS=1` option to build with tests. (Require Catch2)
 
 Use `-DEXAMPLES=1` option to build with examples.
 
