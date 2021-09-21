@@ -1,4 +1,5 @@
 #include "hf_priority_queue.hpp"
+#include "tree_node.hpp"
 hf_priority_queue::hf_priority_queue() {}
 
 hf_priority_queue::hf_priority_queue(size_t size) { _heap.reserve(size); }
@@ -102,7 +103,7 @@ void hf_priority_queue::deserialize(FILE* fl, size_t pq_size)
         size_t sz = 0;
         fread(&ch_tmp, sizeof(ch_tmp), 1, fl);
         fread(&sz, sizeof(sz), 1, fl);
-        _heap.push_back(symbol(ch_tmp, sz));
+        _heap.push_back(tree_node(ch_tmp, sz));
     }
 }
 

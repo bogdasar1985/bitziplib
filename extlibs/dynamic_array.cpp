@@ -29,6 +29,12 @@ size_t dynamic_array<T>::size() const
 }
 
 template <typename T>
+size_t dynamic_array<T>::capacity() const
+{
+    return _capacity;
+}
+
+template <typename T>
 T& dynamic_array<T>::operator[](const size_t index)
 {
     return array[index];

@@ -11,3 +11,5 @@ add_subdirectory(examples/file_compressor)
 add_subdirectory(extlibs)
 
 add_subdirectory(src/huffman)
+
+add_subdirectory(tests)

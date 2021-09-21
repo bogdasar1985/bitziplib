@@ -1,5 +1,6 @@
 #ifndef DYNAMIC_ARRAY
 #define DYNAMIC_ARRAY
+#include <cstddef>
 #include <stdlib.h>
 #include <math.h>
 #include "utility.hpp"
@@ -13,6 +14,7 @@ public:
     ~dynamic_array();
     void push_back(const T& sym);
     size_t size() const;
+    size_t capacity() const;
     T& operator[] (const size_t index);
     T operator[] (const size_t index) const;
     T remove(const size_t index);
